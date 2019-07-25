@@ -20,6 +20,7 @@ class CohortsController < ApplicationController
 
   def show;
     @cohort = Cohort.find(params[:id])
+    @members = @cohort.users.all
   end
 
 private
