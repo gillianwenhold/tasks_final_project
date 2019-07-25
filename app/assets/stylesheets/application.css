@@ -42,6 +42,10 @@ h1 {
   text-decoration: none;
 }
 
+.navbar-text:hover {
+  color: #363537;
+}
+
 .notice {
   padding: .5em;
   background-color: #B8D8D8;
@@ -63,6 +67,21 @@ h1 {
   font-size: 1.5em;
   margin: 0 0 1em 0;
   padding: .5em;
+  color: #FFF;
+
+}
+
+.btn {
+  text-decoration: none;
+  color: #F24236;
+  margin: auto;
+  border: 2px solid #F24236;
+  padding: .5em;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #F24236;
   color: #FFF;
 
 }

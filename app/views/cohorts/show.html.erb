@@ -1,9 +1,9 @@
 <h1><%= @cohort.name %></h1>
-<h3><%= @cohort.description %></h3>
+<p><%= @cohort.description %></p>
 -------------------------------------
 <% @members.each do |m| %>
   <p><%= link_to m.full_name, user_path(m) %></p>
 <% end %>
 
-<%= link_to 'All Cohorts', cohorts_path %>
+<%= link_to 'All Cohorts', cohorts_path, class: "btn" %>
 

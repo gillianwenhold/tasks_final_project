@@ -1,6 +1,7 @@
 <h1>CHANGE Cohorts</h1>
-<%= @cohorts.each do |c| %>
+
+<% @cohorts.each do |c| %>
   <p><%= link_to c.name, cohort_path(c) %> (<%= c.users.count %>)</p>
 <% end %>
 
-<%= link_to "Add Cohort", new_cohort_path %>
+<%= link_to "Add Cohort", new_cohort_path, class: "btn" %>
