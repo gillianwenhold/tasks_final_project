@@ -1,9 +1,23 @@
-<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
-  <label>Username: </label>
-  <input name=username>
+<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-error">
+        The form contains <%= pluralize(@user.errors.count, "error") %>.
+      </div>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li>* <%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username %>
   <br>
-  <label>Password: </label>
-  <input name=password>
+  <%= f.label :password %>
+  <%= f.text_field :password %>
   <br>
-  <input type=submit value='login'>
+  <%= f.submit "login" %>
 <% end %>

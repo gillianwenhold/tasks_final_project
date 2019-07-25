@@ -1,15 +1,22 @@
 # frozen_string_literal: true
 
+require "pry"
+
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
-  def new; end
+  def new
+    @user = User.new
+  end
 
   def create
-    @user = User.find_by(username: params[:username])
-    return head(:forbidden) unless @user.authenticate(params[:password])
-    session[:user_id] = @user.id
-    redirect_to user_path(@user)
+    @user = User.find_by(username: params[:user][:username])
+    if @user && @user.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   def destroy

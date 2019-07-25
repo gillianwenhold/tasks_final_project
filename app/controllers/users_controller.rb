@@ -33,6 +33,7 @@ private
     params.require(:user).permit(
       :username,
       :password,
+      :password_confirmation,
       :first_name,
       :last_name,
       :grade,
