@@ -1,3 +1,6 @@
-<h1>Sign Up!</h1>
-<%= render 'form', user: @user %>
-Already have an account? <%= link_to 'Log In', login_path %>
+<div class="form">
+  <h1 class="form-heading">Sign Up!</h1>
+  <%= render 'form', user: @user %>
+  <br>
+  Already have an account? <%= link_to 'Log In', login_path %>
+</div>

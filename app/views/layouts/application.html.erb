@@ -11,17 +11,15 @@
 
   <body>
     <div class="navbar">
-      <div class="container">
-        <% if session[:user_id] %>
-          <a class="navbar-text" href="<%= root_path %>"/>Home</a>
-          <a class="navbar-text" href="<%= cohorts_path %>"/>Cohorts</a>
-          <a class="navbar-text" href="<%= users_path %>"/>Fellows</a>
-          <a class="navbar-text" style="float:right" <%= link_to 'Log Out', logout_path, method: :delete %></a>
-        <% else %>
-          <a class="navbar-text" href="<%= login_path %>"/>Login</a>
-          <a class="navbar-text" href="<%= new_user_path %>"/>Sign Up</a>
-        <% end %>
-      </div>
+      <% if session[:user_id] %>
+        <a class="navbar-text" href="<%= root_path %>"/>Home</a>
+        <a class="navbar-text" href="<%= cohorts_path %>"/>Cohorts</a>
+        <a class="navbar-text" href="<%= users_path %>"/>Fellows</a>
+        <a class="navbar-text" style="float:right" <%= link_to 'Log Out', logout_path, method: :delete %></a>
+      <% else %>
+        <a class="navbar-text" href="<%= login_path %>"/>Login</a>
+        <a class="navbar-text" href="<%= new_user_path %>"/>Sign Up</a>
+      <% end %>
     </div>
 
     <div class="container">

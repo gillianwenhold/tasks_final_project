@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      redirect_to user_path(@user)
+      flash[:notice] = "Please check your username/password, and try again."
+      redirect_to login_path
     end
   end
 
