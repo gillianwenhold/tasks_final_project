@@ -5,4 +5,8 @@ class User < ApplicationRecord
   has_many :user_tasks
   has_many :tasks, through: :user_tasks
   has_secure_password
+
+  def full_name
+    first_name + " " + last_name
+  end
 end
