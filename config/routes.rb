@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new", as: "login"
   post "/login", to: "sessions#create"
   get "/signup", to: "users#new"
+  delete "/logout", to: "sessions#destroy", as: "logout"
 
   resources :cohorts do
     resources :tasks, only: [:index, :show]

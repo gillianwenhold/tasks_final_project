@@ -7,6 +7,8 @@ ruby "2.5.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # Use ActiveModel has_secure_password
 gem "bcrypt", "~> 3.1.7"
+gem "bootstrap-sass", "3.4.1"
+
 # Use CoffeeScript for .coffee assets and views
 gem "coffee-rails", "~> 4.2"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
