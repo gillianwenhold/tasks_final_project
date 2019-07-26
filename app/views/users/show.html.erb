@@ -1,5 +1,11 @@
 <h1><%= @user.full_name %></h1>
-<h3><%= @user.cohort.name %></h3>
+<h3>Cohort: <%= @cohort.name %></h3>
+<h3>Members:</h3>
+<ul>
+  <% @cohort.users.each do |u| %>
+    <li><%= link_to u.full_name, user_path(u.id) %></li>
+  <% end %>
+</ul>
 
 <% if session[:user_id] == @user.id %>
   <%= link_to "Edit Profile", edit_user_path(@user), class: "btn" %>
