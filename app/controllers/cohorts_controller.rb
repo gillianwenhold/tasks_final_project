@@ -21,6 +21,7 @@ class CohortsController < ApplicationController
   def show;
     @cohort = Cohort.find(params[:id])
     @members = @cohort.users.all
+    @tasks = @cohort.tasks.all
   end
 
 private

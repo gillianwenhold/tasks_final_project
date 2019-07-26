@@ -1,9 +1,20 @@
-<h1><%= @cohort.name %></h1>
-<p><%= @cohort.description %></p>
--------------------------------------
-<% @members.each do |m| %>
-  <p><%= link_to m.full_name, user_path(m) %></p>
-<% end %>
+<div class="row">
+  <div class="col-1">
+    <h1><%= @cohort.name %></h1>
+    <p><%= @cohort.description %></p>
+    -------------------------------------
+    <h3>Cohort Tasks</h3>
+    <% @tasks.each do |t| %>
+      <p><%= t.description %></p>
+    <% end %>
 
-<%= link_to 'All Cohorts', cohorts_path, class: "btn" %>
+    <%= link_to 'All Cohorts', cohorts_path, class: "btn" %>
+  </div>
 
+  <div class="col-2 form">
+    <h1 class="form-heading"><%= @cohort.name %> Members</h1>
+    <% @members.each do |m| %>
+      <p><%= link_to m.full_name, user_path(m) %></p>
+    <% end %>
+  </div>
+</div>
