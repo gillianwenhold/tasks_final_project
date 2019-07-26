@@ -73,7 +73,8 @@ h1 {
 .btn {
   text-decoration: none;
   color: #F24236;
-  margin: auto;
+  float: left;
+  margin: .5em;
   border: 2px solid #F24236;
   padding: .5em;
   border-radius: 5px;
