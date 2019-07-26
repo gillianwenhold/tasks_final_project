@@ -1,13 +1,26 @@
-<h1><%= @user.full_name %></h1>
-<h3>Cohort: <%= @cohort.name %></h3>
-<h3>Members:</h3>
-<ul>
-  <% @cohort.users.each do |u| %>
-    <li><%= link_to u.full_name, user_path(u.id) %></li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="col-1">
+    <h1><%= @user.full_name %></h1>
+    <h3><%= @user.first_name %>'s Tasks:</h3>
+    <ul>
+      <% @user.tasks.each do |t| %>
+        <li><%= link_to t.description, task_path(t.id) %></li>
+      <% end %>
+    </ul>
 
-<% if session[:user_id] == @user.id %>
-  <%= link_to "Edit Profile", edit_user_path(@user), class: "btn" %>
-  <%= link_to "Create Task", new_task_path, class: "btn" %>
-<% end %>
+    <% if session[:user_id] == @user.id %>
+      <%= link_to "Edit Profile", edit_user_path(@user), class: "btn" %>
+      <%= link_to "Create Task", new_task_path, class: "btn" %>
+    <% end %>
+  </div>
+
+  <div class="col-2 form">
+    <h1 class="form-heading">Cohort: <%= @cohort.name %></h1>
+    <h3>Members:</h3>
+    <ul>
+      <% @cohort.users.each do |u| %>
+        <li><%= link_to u.full_name, user_path(u.id) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
