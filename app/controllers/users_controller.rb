@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    if @user.update
+    if @user.save
       redirect_to @user
     else
       render :edit

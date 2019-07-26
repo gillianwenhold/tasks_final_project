@@ -1,0 +1,37 @@
+<%= form_for task do |f| %>
+
+  <% if task.errors.any? %>
+    <div class="notice">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <ul>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.label :priority, "Choose Priority (1: high)"%>
+    <%= f.select :priority, ["1", "2", "3", "4"]%>
+  </p>
+
+  <p>
+    <%= f.label :complete %>
+    <%= f.check_box :complete %>
+  </p>
+
+  <p>
+    <%= f.label :cohort_id %>
+    <%= f.collection_select(:cohort_id, Cohort.all, :id, :name) %>
+  </p>
+
+  <%= f.submit %>
+
+<% end %>
+

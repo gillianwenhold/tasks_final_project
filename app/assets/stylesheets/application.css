@@ -83,6 +83,13 @@ h1 {
 .btn:hover {
   background-color: #F24236;
   color: #FFF;
-
 }
 
+.due {
+  text-decoration: none;
+  float: right;
+  background-color: #B8D8D8;
+  margin: auto;
+  padding: .5em;
+  border-radius: 5px;
+}
