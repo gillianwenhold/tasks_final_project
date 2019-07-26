@@ -1,4 +1,18 @@
-<h1><%= @task.description %></h1>
-<h3 class="due">Complete By:</h3>
-<h3>Priority: <%= @task.priority %></h3>
-<h3>Cohort: <%= @task.cohort.name %></h3>
+<div class="row">
+  <div class="col-1">
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+    <h1><%= @task.description %></h1>
+    <h3>Priority: <%= @task.priority %></h3>
+    <h3>Cohort: <%= @task.cohort.name %></h3>
+    <%= render 'claim', task: @task %>
+  </div>
+
+  <div class="col-2 form">
+    <h1 class="form-heading">Completed By</h1>
+    <% @task.users.each do |u| %>
+      <p><%= u.full_name %></p>
+    <% end %>
+  </div>
+</div>

@@ -6,6 +6,5 @@ class UserTask < ApplicationRecord
 
   def mark_complete
     task.update(complete: true)
-    ""
   end
 end

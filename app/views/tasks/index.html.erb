@@ -1,15 +1,10 @@
 <h1>Tasks</h1>
 
 <% @tasks.each do |t| %>
-  <h2><%= t.cohort.name %> | <%= t.description %></h2>
+  <h2><%= link_to t.description, task_path(t) %> | <%= t.cohort.name %></h2>
   <p>Priority: <%= t.priority %> | Due: <%= t.due_date %></p>
   <% t.users.each do |u| %>
     <%= u.full_name %>
   <% end %>
-  <form class="btn" action="/user_tasks" method="POST">
-    <input type="hidden" name="user_id" value="<%= session[:user_id] %>">
-    <input type="hidden" name="task_id" value="<%= t.id %>">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="submit" value="Claim Task">
-  </form>
+  <%= render 'claim', task: t %>
 <% end %>
