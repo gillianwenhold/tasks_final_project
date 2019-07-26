@@ -4,7 +4,7 @@
 
 <% @tasks.each do |t| %>
   <h2><%= link_to t.description, task_path(t) %> | <%= t.cohort.name %></h2>
-  <p>Priority: <%= t.priority %> | Due: <%= t.due_date %></p>
+  <p>Priority: <%= t.priority %> | Due: <%= t.due %></p>
   <% t.users.each do |u| %>
     <%= u.full_name %>
   <% end %>
