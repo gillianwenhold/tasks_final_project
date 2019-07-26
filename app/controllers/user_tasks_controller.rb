@@ -7,7 +7,7 @@ class UserTasksController < ApplicationController
   end
 
   def create
-    @user_task = UserTask.create(
+    @user_task = UserTask.find_or_create_by(
       user_id: params[:user_id],
       task_id: params[:task_id]
     )
