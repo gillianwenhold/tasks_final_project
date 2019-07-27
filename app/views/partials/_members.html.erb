@@ -1,4 +1,4 @@
 <h1 class="form-heading"><%= link_to cohort.name, cohort %></h1>
 <% members.each do |m| %>
-  <p><%= link_to m.full_name, user_path(m) %></p>
+  <p><%= link_to m.full_name, user_path(m) %> (<%= m.tasks.incomplete.count %>)</p>
 <% end %>

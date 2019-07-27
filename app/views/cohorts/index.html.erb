@@ -1,5 +1,5 @@
 <h1>CHANGE Cohorts</h1>
-<p class="info">Click on a CHANGEr to view their profile, or click on the name of the cohort to view their page.</p>
+<p class="info">Click on a CHANGEr to view their profile, or click on the name of the cohort to view their page. The number in parentheses () represents the amount of claimed but incomplete tasks belonging to the user.</p>
 <div class="row">
   <% @cohorts.each do |c| %>
       <div class="form2"><%= render 'partials/members', cohort: c, members: c.users %></div>
