@@ -55,7 +55,8 @@ private
       :first_name,
       :last_name,
       :grade,
-      :cohort_id
+      :cohort_id,
+      :admin
     )
   end
 end

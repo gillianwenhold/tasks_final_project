@@ -45,6 +45,11 @@
     <%= f.collection_select(:cohort_id, Cohort.all, :id, :name) %>
   </p>
 
+  <p>
+    <%= f.label :admin %>
+    <%= f.check_box :admin %>
+  </p>
+
   <%= f.submit %>
 
 <% end %>

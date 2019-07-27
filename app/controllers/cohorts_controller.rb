@@ -22,6 +22,9 @@ class CohortsController < ApplicationController
     @cohort = Cohort.find(params[:id])
     @members = @cohort.users.all
     @tasks = @cohort.tasks.all
+    if params[:id] == current_user.cohort.id && @user.tasks.incomplete.overdue(Time.now).any?
+      flash[:notice] = "You have overdue task(s). Please check the list!"
+    end
   end
 
 private

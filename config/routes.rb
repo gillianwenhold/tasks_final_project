@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post "/user_tasks", to: "user_tasks#create", as: "user_tasks"
 
   resources :cohorts do
-    resources :tasks, only: [:index, :show, :new]
+    resources :tasks, only: [:new, :create]
   end
   resources :tasks
   resources :users
