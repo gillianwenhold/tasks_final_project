@@ -9,10 +9,9 @@
     <% @tasks.each do |t| %>
       <p><%= t.description %></p>
     <% end %>
-
-    <%= link_to 'All Cohorts', cohorts_path, class: "btn" %>
   </div>
 
   <%= render 'partials/members', cohort: @cohort, members: @cohort.users %>
-
 </div>
+
+<%= link_to 'All Cohorts', cohorts_path, class: "btn btn-right" %>

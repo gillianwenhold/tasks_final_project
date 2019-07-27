@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
+/* ---------- General Formatting ---------- */
  body {
   margin: 0;
   background-color: #FFFFFF;
@@ -26,8 +26,22 @@ h1 {
 }
 
 .container {
-  padding: 1em 3em;
+  padding: 2em 4em;
  }
+
+ .row {
+  display: flex;
+}
+
+.col-1 {
+  width: 65%;
+}
+
+.col-2 {
+  width: 35%;
+}
+
+/* ---------- Navbar & Flash ---------- */
 
 .navbar {
   padding: 1em;
@@ -53,11 +67,13 @@ h1 {
   margin: 1.5em 0;
 }
 
+/* ---------- Form & Members ---------- */
+
 .form {
-  margin: 100px auto;
+  margin: auto;
   padding-bottom: 1em;
   text-align: center;
-  width: 30em;
+  width: 40%;
   border: 5px solid #363537;
   border-radius: 5px;
 }
@@ -70,6 +86,8 @@ h1 {
   color: #FFF;
 }
 
+/* ---------- Buttons ---------- */
+
 .btn {
   text-decoration: none;
   color: #F24236;
@@ -78,6 +96,10 @@ h1 {
   border: 2px solid #F24236;
   padding: .5em;
   border-radius: 5px;
+}
+
+.btn-right {
+  float: right;
 }
 
 .btn:hover {
@@ -92,16 +114,4 @@ h1 {
   margin: auto;
   padding: .5em;
   border-radius: 5px;
-}
-
-.row {
-  display: flex;
-}
-
-.col-1 {
-  width: 65%;
-}
-
-.col-2 {
-  width: 35%;
 }
