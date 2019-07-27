@@ -26,7 +26,7 @@ h1 {
 }
 
 th, td {
-  padding: .5em 1.75em;
+  padding: .5em 2em;
   text-align: left;
 }
 
@@ -48,6 +48,9 @@ td a:hover, p a:hover, ul a:hover {
   display: flex;
 }
 
+.col {
+  width: 45%;
+}
 .col-1 {
   width: 65%;
 }
@@ -56,16 +59,21 @@ td a:hover, p a:hover, ul a:hover {
   width: 35%;
 }
 
+.info {
+  font-style: italic;
+  color: #363537;
+}
 /* ---------- Navbar & Flash ---------- */
 
 .navbar {
-  padding: 1em;
+  padding: 1.5em 2em;
   background-color: #F24236;
   position: fixed-top;
  }
 
 .navbar-text {
   font-size: 1.5em;
+  font-weight: 700;
   padding: 0 .5em;
   color: #FFFFFF;
   text-decoration: none;
@@ -94,12 +102,30 @@ td a:hover, p a:hover, ul a:hover {
   border-radius: 5px;
 }
 
+.form2 {
+  margin: 2em .5em;
+  padding-bottom: 1em;
+  text-align: center;
+  width: 100%;
+  border: 2px solid #363537;
+  border-radius: 5px;
+}
+
 .form-heading {
   background-color: #F24236;
   font-size: 1.5em;
   margin: 0 0 1em 0;
   padding: .5em;
   color: #FFF;
+}
+
+.form-heading a {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.form-heading a:hover {
+  color: #363537;
 }
 
 /* ---------- Buttons ---------- */

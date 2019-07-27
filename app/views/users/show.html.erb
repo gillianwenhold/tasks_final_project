@@ -7,8 +7,9 @@
     <%= render 'partials/show_tasks', tasks: @user.tasks %>
   </div>
 
-  <%= render 'partials/members', cohort: @user.cohort, members: @user.cohort.users %>
-
+  <div class="col-2 form">
+    <%= render 'partials/members', cohort: @user.cohort, members: @user.cohort.users %>
+  </div>
 </div>
 
 <% if session[:user_id] == @user.id %>
@@ -17,3 +18,8 @@
 <% else %>
   <%= link_to "All Users", users_path, class: "btn btn-right" %>
 <% end %>
+
+<br />
+<br />
+
+<h1>Completed Tasks</h1>

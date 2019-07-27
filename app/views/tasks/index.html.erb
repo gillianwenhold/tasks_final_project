@@ -2,33 +2,35 @@
 
 <%= link_to 'Create Task', new_task_path, class: "btn btn-right" %>
 <h1>Tasks</h1>
-
-<table>
-  <tr>
-    <th>Cohort</th>
-    <th>Description</th>
-    <th>Claimed By</th>
-    <th>Priority</th>
-  </tr>
-  <% @tasks.each do |t| %>
+<p class="info">Click on the description of a task to see more info about it, or mark as complete.</p>
+<div class="row">
+  <table>
     <tr>
-      <td><%= t.cohort.name %></td>
-      <td><%= link_to t.description, task_path(t) %></td>
-      <td>
-        <% if !t.users.empty? %>
-          <% t.users.each do |u| %>
-            <%= u.first_name %>
-          <% end %>
-        <% else %>
-          <%= render 'partials/claim', task: t %>
-        <% end %>
-      </td>
-      <td><%= t.priority %></td>
-      <% if t.complete %>
-        <td class="done" style="margin-top:.5em">COMPLETE</td>
-      <% else %>
-        <td class="due" style="margin-top:.5em">Due: <%= t.due %></td>
-      <% end %>
+      <th>Cohort</th>
+      <th>Description</th>
+      <th>Claimed By</th>
+      <th>Priority</th>
     </tr>
-  <% end %>
-</table>
+    <% @tasks.each do |t| %>
+      <tr>
+        <td><%= t.cohort.name %></td>
+        <td><%= link_to t.description, task_path(t) %></td>
+        <td>
+          <% if !t.users.empty? %>
+            <% t.users.each do |u| %>
+              <%= u.first_name %>
+            <% end %>
+          <% else %>
+            <%= render 'partials/claim', task: t %>
+          <% end %>
+        </td>
+        <td><%= t.priority %></td>
+        <% if t.complete %>
+          <td class="done" style="margin-top:.5em">COMPLETE</td>
+        <% else %>
+          <td class="due" style="margin-top:.5em">Due: <%= t.due %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,5 +1,7 @@
 <h1>CHANGE Cohorts</h1>
-
-<% @cohorts.each do |c| %>
-  <p><%= link_to c.name, cohort_path(c) %> (<%= c.users.count %>)</p>
-<% end %>
+<p class="info">Click on a CHANGEr to view their profile, or click on the name of the cohort to view their page.</p>
+<div class="row">
+  <% @cohorts.each do |c| %>
+      <div class="form2"><%= render 'partials/members', cohort: c, members: c.users %></div>
+  <% end %>
+</div>
