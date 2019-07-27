@@ -1,0 +1,5 @@
+<%= form_for task do |t| %>
+  <input type="hidden" name="task[complete]" value="true">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Mark Completed" class="btn">
+<% end %>

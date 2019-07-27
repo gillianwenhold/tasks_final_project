@@ -8,5 +8,10 @@
   <% t.users.each do |u| %>
     <%= u.full_name %>
   <% end %>
-  <%= render 'claim', task: t %>
+  <% if t.complete %>
+    <p>COMPLETE</p>
+  <% else %>
+    <%= render 'partials/claim', task: t %>
+    <%= render 'partials/complete', task: t %>
+  <% end %>
 <% end %>

@@ -22,6 +22,17 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
+  def update
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+    if @task.save
+      flash[:notice] = "Task Updated."
+      redirect_to @task
+    else
+      flash[:notice] = "Error. Please try again."
+    end
+  end
+
 private
 
   def task_params

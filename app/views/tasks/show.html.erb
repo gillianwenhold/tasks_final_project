@@ -6,7 +6,7 @@
   <div class="col-1">
     <h3>Cohort: <%= @task.cohort.name %></h3>
     <p>Priority: <%= @task.priority %> | Due: <%= @task.due %>
-    <%= render 'claim', task: @task %>
+    <%= render 'partials/claim', task: @task %>
   </div>
 
   <div class="col-2 form" style="margin-top:20px">
