@@ -2,7 +2,7 @@
 
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(due_date: :asc)
     if @tasks.incomplete.overdue(Time.now).any?
       flash[:notice] = "There are overdue task(s). Please check the list!"
     end

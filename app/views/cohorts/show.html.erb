@@ -17,6 +17,7 @@
 <% if current_user.admin %>
   <%= link_to 'All Cohorts', cohorts_path, class: "btn btn-right" %>
 <% end %>
+<%= link_to "Create Task for #{@cohort.name}", new_cohort_task_path(@cohort), class: "btn btn-right" %>
 
 <h1>Completed Tasks</h1>
 <%= render 'partials/table_tasks', tasks: @tasks.completed %>
