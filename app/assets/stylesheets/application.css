@@ -22,7 +22,22 @@
 
 h1 {
   font-size: 2em;
-  font-color: #363537;
+  color: #363537;
+}
+
+th, td {
+  padding: .5em 1.75em;
+  text-align: left;
+}
+
+td a, p a, ul a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #363537;
+}
+
+td a:hover, p a:hover, ul a:hover {
+  color: #F24236;
 }
 
 .container {

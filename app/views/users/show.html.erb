@@ -4,14 +4,11 @@
   <div class="col-1">
     <h1><%= @user.full_name %> | <%= @user.cohort.name %></h1>
     <h3><%= @user.first_name %>'s Tasks:</h3>
-    <ul>
-      <% @user.tasks.each do |t| %>
-        <li><%= link_to t.description, task_path(t.id) %></li>
-      <% end %>
-    </ul>
-    <br>
+    <%= render 'partials/show_tasks', tasks: @user.tasks %>
   </div>
+
   <%= render 'partials/members', cohort: @user.cohort, members: @user.cohort.users %>
+
 </div>
 
 <% if session[:user_id] == @user.id %>
