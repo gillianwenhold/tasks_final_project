@@ -1,10 +1,9 @@
 <%= render 'partials/flash' %>
 
 <% if @task.complete %>
-  <h2 class="due">COMPLETE</h2>
+  <h3 class="done">COMPLETE</h3>
 <% else %>
-  <%= render 'partials/claim', task: @task %>
-  <%= render 'partials/complete', task: @task %>
+  <h3 class="due">Due <%= @task.due %></h3>
 <% end %>
 
 <h1><%= @task.description %></h1>
@@ -13,12 +12,16 @@
   <div class="col-1">
     <h3>Cohort: <%= @task.cohort.name %></h3>
     <p>Priority: <%= @task.priority %> | Due: <%= @task.due %>
+    <% if !@task.complete %>
+      <%= render 'partials/claim', task: @task %>
+      <%= render 'partials/complete', task: @task %>
+    <% end %>
   </div>
 
-  <div class="col-2 form" style="margin-top:20px">
+  <div class="col-2 form">
     <h1 class="form-heading">Claimed By</h1>
     <% @task.users.each do |u| %>
-      <p><%= u.full_name %></p>
+      <p><%= link_to u.full_name, user_path(u) %></p>
     <% end %>
   </div>
 </div>
