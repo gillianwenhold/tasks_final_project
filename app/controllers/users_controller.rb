@@ -25,6 +25,9 @@ class UsersController < ApplicationController
 
   def show;
     @cohort = @user.cohort
+    if @user.tasks.incomplete.overdue(Time.now).any?
+      flash[:notice] = "You have overdue task(s). Please check the list!"
+    end
   end
 
   def edit; end

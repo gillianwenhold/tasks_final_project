@@ -4,7 +4,7 @@
   <div class="col-1">
     <h1><%= @user.full_name %> | <%= @user.cohort.name %></h1>
     <h3><%= @user.first_name %>'s To-Do Tasks:</h3>
-    <%= render 'partials/show_tasks', tasks: @user.tasks.incomplete %>
+    <%= render 'partials/condensed_table_tasks', tasks: @user.tasks.incomplete %>
   </div>
 
   <div class="col-2 form">
@@ -23,4 +23,4 @@
 <br />
 
 <h1>Completed Tasks</h1>
-    <%= render 'partials/show_tasks', tasks: @user.tasks.completed %>
+<%= render 'partials/table_tasks', tasks: @user.tasks.completed %>

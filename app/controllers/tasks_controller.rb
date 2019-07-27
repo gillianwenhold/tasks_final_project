@@ -3,6 +3,9 @@
 class TasksController < ApplicationController
   def index
     @tasks = Task.all
+    if @tasks.incomplete.overdue(Time.now).any?
+      flash[:notice] = "You have overdue task(s). Please check the list!"
+    end
   end
 
   def new;

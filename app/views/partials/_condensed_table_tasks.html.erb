@@ -1,13 +1,11 @@
-<table>
+<table class="condensed">
     <tr>
-      <th>Cohort</th>
       <th>Description</th>
       <th>Claimed By</th>
       <th>Priority</th>
     </tr>
     <% tasks.each do |t| %>
       <tr>
-        <td><%= t.cohort.name %></td>
         <td><%= link_to t.description, task_path(t) %></td>
         <td>
           <% if !t.users.empty? %>
@@ -24,7 +22,7 @@
         <% elsif t.overdue %>
           <td class="overdue" style="margin-top:.5em">Due: <%= t.due %></td>
         <% else %>
-          <td class="due" style="margin-top:.5em">Due: <%= t.due %></td>
+          <td class="due" style="margin-top:2em">Due: <%= t.due %></td>
         <% end %>
       </tr>
     <% end %>

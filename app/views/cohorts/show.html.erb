@@ -6,7 +6,7 @@
     <p><%= @cohort.description %></p>
     -------------------------------------
     <h3>Cohort Tasks</h3>
-    <%= render 'partials/show_tasks', tasks: @tasks.incomplete %>
+<%= render 'partials/table_tasks', tasks: @tasks.incomplete %>
   </div>
 
   <div class="col-2 form">
@@ -17,4 +17,4 @@
 <%= link_to 'All Cohorts', cohorts_path, class: "btn btn-right" %>
 
 <h1>Completed Tasks</h1>
-<%= render 'partials/show_tasks', tasks: @tasks.completed %>
+<%= render 'partials/table_tasks', tasks: @tasks.completed %>

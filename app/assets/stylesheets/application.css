@@ -63,6 +63,11 @@ td a:hover, p a:hover, ul a:hover {
   font-style: italic;
   color: #363537;
 }
+
+.condensed th, .condensed td {
+  padding: .5em .75em;
+  text-align: left;
+}
 /* ---------- Navbar & Flash ---------- */
 
 .navbar {
@@ -154,6 +159,7 @@ td a:hover, p a:hover, ul a:hover {
 .done {
   text-decoration: none;
   float: right;
+  vertical-align: bottom;
   background-color: #4ECDC4;
   color: #FFF;
   padding: .4em 1em;
@@ -163,9 +169,21 @@ td a:hover, p a:hover, ul a:hover {
 .due {
   text-decoration: none;
   float: right;
+  vertical-align: bottom;
   color: #4ECDC4;
   padding: .4em 1em;
   border-radius: 5px;
   border: 2px solid #4ECDC4;
+
+}
+
+.overdue {
+  text-decoration: none;
+  float: right;
+  vertical-align: bottom;
+  color: #F24236;
+  padding: .4em 1em;
+  border-radius: 5px;
+  border: 2px solid #F24236;
 
 }
