@@ -1,5 +1,6 @@
 <%= render 'partials/flash' %>
 
+<%= link_to 'Create Task', new_task_path, class: "btn btn-right" %>
 <h1>Tasks</h1>
 
 <% @tasks.each do |t| %>
@@ -12,6 +13,5 @@
     <p>COMPLETE</p>
   <% else %>
     <%= render 'partials/claim', task: t %>
-    <%= render 'partials/complete', task: t %>
   <% end %>
 <% end %>
