@@ -10,6 +10,9 @@ class TasksController < ApplicationController
 
   def new;
     @task = Task.new
+    if params[:id]
+      @task.cohort_id = params[:id]
+    end
   end
 
   def create;
