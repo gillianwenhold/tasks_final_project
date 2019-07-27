@@ -138,6 +138,7 @@ td a:hover, p a:hover, ul a:hover {
   border: 2px solid #F24236;
   padding: .5em;
   border-radius: 5px;
+  background-color: #FFF;
 }
 
 .btn-right {
