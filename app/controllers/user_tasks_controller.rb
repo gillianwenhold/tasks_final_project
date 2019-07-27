@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UserTasksController < ApplicationController
-
   def new
     @user_task = UserTask.new
   end

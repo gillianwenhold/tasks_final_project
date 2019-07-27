@@ -23,12 +23,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def show;
+  def show
     @cohort = @user.cohort
     @tasks = @user.tasks.all.order(due_date: :asc)
-    if @user == current_user && @user.tasks.incomplete.overdue(Time.now).any?
-      flash[:notice] = "You have overdue task(s). Please check the list!"
-    end
+    flash[:notice] = check if @user == current_user && overdue
   end
 
   def edit; end
@@ -59,5 +57,13 @@ private
       :cohort_id,
       :admin
     )
+  end
+
+  def overdue
+    @user.tasks.incomplete.overdue(Time.now).any?
+  end
+
+  def check
+    "You have overdue task(s) pending. Please check the list and complete!"
   end
 end

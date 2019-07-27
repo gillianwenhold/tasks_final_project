@@ -7,13 +7,13 @@ class Task < ApplicationRecord
   validates :due_date, presence: true
   scope :completed, -> { where(complete: true) }
   scope :incomplete, -> { where(complete: false) }
-  scope :overdue, -> (time) { where("due_date < ?", time) }
+  scope :overdue, ->(time) { where("due_date < ?", time) }
 
   def due
     due_date.strftime("%b %d, %Y")
   end
 
   def overdue
-    due_date < Time.now ? true : false
+    due_date < Time.now
   end
 end

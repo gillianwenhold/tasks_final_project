@@ -3,19 +3,15 @@
 class TasksController < ApplicationController
   def index
     @tasks = Task.all.order(due_date: :asc)
-    if @tasks.incomplete.overdue(Time.now).any?
-      flash[:notice] = "There are overdue task(s). Please check the list!"
-    end
+    flash[:notice] = check if overdue
   end
 
-  def new;
+  def new
     @task = Task.new
-    if params[:id]
-      @task.cohort_id = params[:id]
-    end
+    @task.cohort_id = params[:id] if params[:id]
   end
 
-  def create;
+  def create
     @task = Task.create(task_params)
     if @task.save
       flash[:notice] = "Task successfully created."
@@ -25,7 +21,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def show;
+  def show
     @task = Task.find(params[:id])
   end
 
@@ -43,6 +39,16 @@ class TasksController < ApplicationController
 private
 
   def task_params
-    params.require(:task).permit(:priority, :description, :complete, :due_date, :cohort_id)
+    params.require(:task).permit(
+      :priority, :description, :complete, :due_date, :cohort_id
+    )
+  end
+
+  def check
+    "There are overdue task(s). Please check the list!"
+  end
+
+  def overdue
+    @tasks.incomplete.overdue(Time.now).any?
   end
 end

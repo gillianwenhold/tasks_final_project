@@ -5,11 +5,11 @@ class CohortsController < ApplicationController
     @cohorts = Cohort.all
   end
 
-  def new;
+  def new
     @cohort = Cohort.new
   end
 
-  def create;
+  def create
     @cohort = Cohort.create(cohort_params)
     if @cohort.save
       redirect_to cohort_path(@cohort)
@@ -18,13 +18,11 @@ class CohortsController < ApplicationController
     end
   end
 
-  def show;
+  def show
     @cohort = Cohort.find(params[:id])
     @members = @cohort.users.all
     @tasks = @cohort.tasks.all.order(due_date: :asc)
-    if params[:id] == current_user.cohort.id && @tasks.incomplete.overdue(Time.now).any?
-      flash[:notice] = "You have overdue task(s). Please check the list!"
-    end
+    flash[:notice] = check if overdue
   end
 
 private
@@ -33,4 +31,11 @@ private
     params.require(:cohort).permit(:name, :description)
   end
 
+  def overdue
+    @tasks.incomplete.overdue(Time.now).any?
+  end
+
+  def check
+    "You have overdue task(s) pending. Please check the list and complete!"
+  end
 end
