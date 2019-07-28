@@ -47,6 +47,7 @@ end
 
 group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
+  gem "rubocop"
   # Spring speeds up development by keeping your application
   # running in the background. Read more: https://github.com/rails/spring
   gem "spring"
@@ -61,6 +62,7 @@ group :test do
   gem "capybara", ">= 2.15"
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem "chromedriver-helper"
+  gem "rack_session_access"
   gem "rspec"
   gem "rspec-rails"
   gem "selenium-webdriver"

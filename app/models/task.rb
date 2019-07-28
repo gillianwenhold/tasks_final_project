@@ -5,6 +5,7 @@ class Task < ApplicationRecord
   has_many :user_tasks
   has_many :users, through: :user_tasks
   validates :due_date, presence: true
+  validates :description, presence: true
   scope :completed, -> { where(complete: true) }
   scope :incomplete, -> { where(complete: false) }
   scope :overdue, ->(time) { where("due_date < ?", time) }

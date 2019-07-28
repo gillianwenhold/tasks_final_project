@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :cohorts do
     resources :tasks, only: [:new, :create]
   end
+  resources :users do
+    resources :tasks, only: [:show]
+  end
   resources :tasks
-  resources :users
 end
