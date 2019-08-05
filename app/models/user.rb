@@ -14,8 +14,10 @@ class User < ApplicationRecord
   end
 
   def overdue?
-    if current_user && tasks.incomplete.overdue(Time.now).any?
-      notice = "You have overdue task(s) pending. Please check the list and complete!"
-    end
+    "You have overdue task(s) pending. Please check the list!" if overdue_recs
+  end
+
+  def overdue_recs
+    current_user && tasks.incomplete.overdue(Time.now).any?
   end
 end
