@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :cohorts do
     resources :tasks, only: [:new, :create]
+    resources :users, only: [:show]
   end
   resources :users do
-    resources :tasks, only: [:show]
   end
   resources :tasks
 end
