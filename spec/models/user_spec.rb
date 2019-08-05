@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe User, type: :model do
@@ -16,7 +18,6 @@ RSpec.describe User, type: :model do
       last_name: "Wenhold",
       grade: 17,
       cohort_id: cohort.id,
-      admin: false
     )
   }
 
