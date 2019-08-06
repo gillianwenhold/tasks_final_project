@@ -12,8 +12,4 @@ class User < ApplicationRecord
   def full_name
     first_name + " " + last_name
   end
-
-  def overdue
-    notice = "You have overdue task(s) pending. Please check the list and complete!" if tasks.overdue.any?
-  end
 end

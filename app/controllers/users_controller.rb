@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def show
     @cohort = @user.cohort
     @tasks = @user.tasks.all.order(due_date: :asc)
-    flash[:notice] = @user.overdue if @user == current_user
+    flash[:notice] = Task.pastdue(@tasks) if @user == current_user
   end
 
   def edit; end

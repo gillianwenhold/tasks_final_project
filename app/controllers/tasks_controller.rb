@@ -7,7 +7,7 @@ class TasksController < ApplicationController
              else
                Task.all.order(due_date: :asc)
              end
-    flash[:notice] = "Overdue tasks!" if @tasks.overdue.any?
+    flash[:notice] = Task.pastdue(@tasks)
   end
 
   def new
@@ -46,9 +46,5 @@ private
     params.require(:task).permit(
       :priority, :description, :complete, :due_date, :cohort_id
     )
-  end
-
-  def check
-    "There are overdue task(s). Please check the list!"
   end
 end

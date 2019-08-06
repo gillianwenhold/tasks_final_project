@@ -13,4 +13,8 @@ class Task < ApplicationRecord
   def due
     due_date.strftime("%b %d, %Y")
   end
+
+  def self.pastdue(tasks)
+    notice = "You have overdue task(s) pending. Please check the list and complete!" if tasks.overdue.any?
+  end
 end

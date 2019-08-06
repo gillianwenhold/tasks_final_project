@@ -22,20 +22,12 @@ class CohortsController < ApplicationController
     @cohort = Cohort.find(params[:id])
     @members = @cohort.users.all
     @tasks = @cohort.tasks.all.order(due_date: :asc)
-    flash[:notice] = check if overdue
+    flash[:notice] = Task.pastdue(@tasks)
   end
 
 private
 
   def cohort_params
     params.require(:cohort).permit(:name, :description)
-  end
-
-  def overdue
-    @tasks.incomplete.overdue(Time.now).any?
-  end
-
-  def check
-    "You have overdue task(s) pending. Please check the list and complete!"
   end
 end
