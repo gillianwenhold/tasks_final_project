@@ -6,6 +6,6 @@ FactoryBot.define do
     due_date { Time.now }
     description { "Send Emails!" }
     complete { false }
-    cohort
+    group
   end
 end

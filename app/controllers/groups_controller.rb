@@ -2,6 +2,7 @@
 
 class GroupsController < ApplicationController
   before_action :user_admin
+  before_action :set_group, only: %i[show destroy]
 
   def index
     @groups = Group.all
@@ -23,14 +24,12 @@ class GroupsController < ApplicationController
   def edit; end
 
   def show
-    @group = Group.find(params[:id])
     @members = @group.users.all
     @tasks = @group.tasks.all.order(due_date: :asc)
     flash[:notice] = Task.pastdue(@tasks)
   end
 
   def destroy
-    @group = Group.find(params[:id])
     @group.destroy
     flash[:notice] = "Group deleted."
     redirect_to groups_path
@@ -38,7 +37,12 @@ class GroupsController < ApplicationController
 
 private
 
+  def set_group
+    @group = Group.find(params[:id])
+  end
+
   def group_params
-    params.require(:group).permit(:name, :description)
+    params.require(:group)
+          .permit(:name, :description)
   end
 end

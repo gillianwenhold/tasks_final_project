@@ -7,6 +7,6 @@ FactoryBot.define do
     first_name { "Gillian" }
     last_name { "Wenhold" }
     grade { 17 }
-    cohort
+    group
   end
 end

@@ -2,11 +2,12 @@
 
 class TasksController < ApplicationController
   def index
-    @tasks = if params[:group_id]
-               Group.find(params[:group_id]).tasks.order(due_date: :asc)
-             else
-               Task.all.order(due_date: :asc)
-             end
+    @tasks =
+      if params[:group_id]
+        Group.find(params[:group_id]).tasks.order(due_date: :asc)
+      else
+        Task.all.order(due_date: :asc)
+      end
     flash[:notice] = Task.pastdue(@tasks)
   end
 

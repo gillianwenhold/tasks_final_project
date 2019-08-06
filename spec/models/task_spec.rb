@@ -3,14 +3,14 @@
 require "rails_helper"
 
 RSpec.describe Task, type: :model do
-  it "is valid with a due date, description, and cohort" do
+  it "is valid with a due date, description, and group" do
     expect(build(:task)).to be_valid
   end
 
-  it "belongs to a cohort" do
-    cohort = build(:cohort)
-    task = build(:task, cohort: cohort)
-    expect(task.cohort).to eq(cohort)
+  it "belongs to a group" do
+    group = build(:group)
+    task = build(:task, group: group)
+    expect(task.group).to eq(group)
   end
 
   it "has a method that converts due date to natural language" do

@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  skip_before_action :require_login, only: %i[new create]
+  skip_before_action :require_login, only: %i[new create destroy]
 
   def index
     set_user
@@ -15,8 +15,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.valid?
-      @user.save
+    if @user.valid? && @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else

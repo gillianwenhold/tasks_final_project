@@ -11,7 +11,7 @@
 
   <body>
     <div class="navbar">
-      <% if session[:user_id] %>
+      <% if current_user %>
         <a class="navbar-text" href="<%= root_path %>"/>My Profile</a>
         <% if current_user.admin == true %>
           <a class="navbar-text" href="<%= groups_path %>"/>Groups</a>

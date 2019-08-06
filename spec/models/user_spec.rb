@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe User, type: :model do
   describe "validations" do
-    it "is valid with a username, first and last name, cohort, and password" do
+    it "is valid with a username, first and last name, group, and password" do
       expect(build(:user)).to be_valid
     end
 
@@ -23,10 +23,10 @@ RSpec.describe User, type: :model do
   end
 
   describe "associations" do
-    it "belongs to a cohort" do
-      cohort = build(:cohort)
-      user = build(:user, cohort: cohort)
-      expect(user.cohort).to eq(cohort)
+    it "belongs to a group" do
+      group = build(:group)
+      user = build(:user, group: group)
+      expect(user.group).to eq(group)
     end
 
     it "has many user_tasks, and tasks through user_tasks" do
@@ -34,8 +34,8 @@ RSpec.describe User, type: :model do
       first_task = create(:task, description: "Emails")
       second_task = create(:task, description: "Calls")
 
-      join_1 = create(:user_task, user_id: user.id, task_id: first_task.id)
-      join_2 = create(:user_task, user_id: user.id, task_id: second_task.id)
+      join_1 = create(:user_task, user: user, task: first_task)
+      join_2 = create(:user_task, user: user, task: second_task)
 
       expect(user.user_tasks.count).to eq(2)
       expect(user.user_tasks.last).to eq(join_2)
