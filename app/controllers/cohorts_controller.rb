@@ -27,6 +27,13 @@ class CohortsController < ApplicationController
     flash[:notice] = Task.pastdue(@tasks)
   end
 
+  def destroy
+    @cohort = Cohort.find(params[:id])
+    @cohort.destroy
+    flash[:notice] = "Cohort deleted."
+    redirect_to cohorts_path
+  end
+
 private
 
   def cohort_params
