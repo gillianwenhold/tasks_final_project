@@ -7,7 +7,12 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id])
   end
 
+  def user_admin
+    return head(:forbidden) unless current_user.admin
+  end
+
   helper_method :current_user
+  helper_method :user_admin
 
 private
 

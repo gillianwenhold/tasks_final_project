@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CohortsController < ApplicationController
+  before_action :user_admin
+
   def index
     @cohorts = Cohort.all
   end
