@@ -16,7 +16,7 @@ Requirements:
 - [x] Includes form display of validation errors
 - [x] Includes Unit tests for at least 2 of your models
 - [ ] Conforms to Nitro Ruby linting rules (running `rubocop` returns 0 offenses)
-- [ ] Includes a `README.md` with an application description and installation guide
+- [x] Includes a `README.md` with an application description and installation guide
 
 Confirm:
 - [ ] The application is pretty DRY

@@ -15,7 +15,6 @@
 
 <% if session[:user_id] == @user.id %>
   <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-right" %>
-  <%= link_to "Create Task", new_task_path, class: "btn btn-right" %>
 <% else %>
   <%= link_to "All Users", users_path, class: "btn btn-right" %>
 <% end %>

@@ -7,16 +7,18 @@
     -------------------------------------
     <p class="info">Click on the description of a task to see more info about it, or mark as complete.</p>
     <h3>Cohort Tasks</h3>
-<%= render 'partials/condensed_table_tasks', tasks: @tasks.incomplete %>
+    <%= render 'partials/condensed_table_tasks', tasks: @tasks.incomplete %>
   </div>
 
   <div class="col-2 form">
     <%= render 'partials/members', cohort: @cohort, members: @cohort.users %>
   </div>
 </div>
+
 <% if current_user.admin %>
   <%= link_to 'All Cohorts', cohorts_path, class: "btn btn-right" %>
 <% end %>
+
 <%= link_to "Create Task for #{@cohort.name}", new_cohort_task_path(@cohort), class: "btn btn-right" %>
 
 <h1>Completed Tasks</h1>
