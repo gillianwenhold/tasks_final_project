@@ -17,7 +17,7 @@
           <a class="navbar-text" href="<%= cohorts_path %>"/>Cohorts</a>
           <a class="navbar-text" href="<%= tasks_path %>"/>To-Do</a>
         <% else %>
-          <a class="navbar-text" href="<%= cohort_path(current_user.cohort.id) %>"/>To-Do</a>
+          <a class="navbar-text" href="<%= cohort_tasks_path(current_user.cohort.id) %>"/>To-Do</a>
         <% end %>
         <a class="navbar-text" style="float:right" <%= link_to 'Log Out', logout_path, method: :delete %></a>
       <% else %>

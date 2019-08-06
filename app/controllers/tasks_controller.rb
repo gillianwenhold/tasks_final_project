@@ -2,8 +2,15 @@
 
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all.order(due_date: :asc)
+    @tasks = if params[:cohort_id]
+               Cohort.find(params[:cohort_id]).tasks.order(due_date: :asc)
+             else
+               Task.all.order(due_date: :asc)
+             end
     flash[:notice] = check if overdue
+  rescue ActiveRecord::RecordNotFound
+    flash[:notice] = "Cohort not found."
+    redirect_to home_path
   end
 
   def new
