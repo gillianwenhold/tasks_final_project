@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  belongs_to :cohort
+  belongs_to :group
   has_many :user_tasks
   has_many :tasks, through: :user_tasks
   validates :username, uniqueness: true

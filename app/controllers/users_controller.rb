@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @cohort = @user.cohort
+    @group = @user.group
     @tasks = @user.tasks.all.order(due_date: :asc)
     flash[:notice] = Task.pastdue(@tasks) if @user == current_user
   end
@@ -61,7 +61,7 @@ private
       :first_name,
       :last_name,
       :grade,
-      :cohort_id,
+      :group_id,
       :admin
     )
   end

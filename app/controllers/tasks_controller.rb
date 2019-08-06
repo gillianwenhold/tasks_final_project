@@ -2,8 +2,8 @@
 
 class TasksController < ApplicationController
   def index
-    @tasks = if params[:cohort_id]
-               Cohort.find(params[:cohort_id]).tasks.order(due_date: :asc)
+    @tasks = if params[:group_id]
+               Cohort.find(params[:group_id]).tasks.order(due_date: :asc)
              else
                Task.all.order(due_date: :asc)
              end
@@ -12,7 +12,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    @task.cohort_id = params[:id] if params[:id]
+    @task.group_id = params[:id] if params[:id]
   end
 
   def create
@@ -51,7 +51,7 @@ private
 
   def task_params
     params.require(:task).permit(
-      :priority, :description, :complete, :due_date, :cohort_id
+      :priority, :description, :complete, :due_date, :group_id
     )
   end
 end

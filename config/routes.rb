@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy", as: "logout"
   post "/user_tasks", to: "user_tasks#create", as: "user_tasks"
 
-  resources :cohorts do
+  resources :groups do
     resources :tasks, only: [:index, :new, :create]
     resources :users, only: [:show]
   end

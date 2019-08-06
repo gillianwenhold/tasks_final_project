@@ -1,0 +1,11 @@
+<%= link_to 'Create Group', new_group_path, class: "btn btn-right" %>
+
+<h1>Groups</h1>
+
+<p class="info">Click on a member to view their profile, or click on the name of the group to view their page. The number in parentheses () represents the amount of claimed but incomplete tasks belonging to the user.</p>
+
+<div class="row">
+  <% @groups.each do |g| %>
+      <div class="form2"><%= render 'partials/members', group: g, members: g.users %></div>
+  <% end %>
+</div>

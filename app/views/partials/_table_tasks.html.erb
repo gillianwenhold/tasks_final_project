@@ -1,13 +1,13 @@
 <table>
     <tr>
-      <th>Cohort</th>
+      <th>Group</th>
       <th>Description</th>
       <th>Claimed By</th>
       <th>Priority</th>
     </tr>
     <% tasks.each do |t| %>
       <tr>
-        <td><%= t.cohort.name %></td>
+        <td><%= t.group.name %></td>
         <td><%= link_to t.description, task_path(t) %></td>
         <td>
           <% if !t.users.empty? %>

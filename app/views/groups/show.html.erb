@@ -2,25 +2,25 @@
 
 <div class="row">
   <div class="col-1">
-    <h1><%= @cohort.name %></h1>
-    <p><%= @cohort.description %></p>
+    <h1><%= @group.name %></h1>
+    <p><%= @group.description %></p>
     -------------------------------------
     <p class="info">Click on the description of a task to see more info about it, or mark as complete.</p>
-    <h3>Cohort Tasks</h3>
+    <h3>Group Tasks</h3>
     <%= render 'partials/condensed_table_tasks', tasks: @tasks.incomplete %>
   </div>
 
   <div class="col-2 form">
-    <%= render 'partials/members', cohort: @cohort, members: @cohort.users %>
+    <%= render 'partials/members', group: @group, members: @group.users %>
   </div>
 </div>
 
 <% if current_user.admin %>
-  <%= link_to 'All Cohorts', cohorts_path, class: "btn btn-right" %>
-  <%= link_to 'Delete Cohort', @cohort, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-right" %>
+  <%= link_to 'All Groups', groups_path, class: "btn btn-right" %>
+  <%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-right" %>
 <% end %>
 
-<%= link_to "Create Task for #{@cohort.name}", new_cohort_task_path(@cohort), class: "btn btn-right" %>
+<%= link_to "Create Task for #{@group.name}", new_group_task_path(@group), class: "btn btn-right" %>
 
 <h1>Completed Tasks</h1>
 <%= render 'partials/table_tasks', tasks: @tasks.completed %>

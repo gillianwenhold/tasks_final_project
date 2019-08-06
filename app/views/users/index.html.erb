@@ -1,8 +1,8 @@
 <%= render 'partials/flash' %>
 
-<h1>CHANGE Fellows</h1>
+<h1>All Users</h1>
 <ul>
   <% @users.each do |u| %>
-    <li><%= link_to u.full_name, user_path(u) %> | <%= link_to u.cohort.name, cohort_path(u.cohort) %></li>
+    <li><%= link_to u.full_name, user_path(u) %> | <%= link_to u.group.name, group_path(u.group) %></li>
   <% end %>
 </ul>
