@@ -27,3 +27,6 @@
 </div>
 
 <%= link_to 'All Tasks', tasks_path, class: "btn btn-right" %>
+<% if current_user.admin %>
+  <%= link_to 'Delete Task', @task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-right" %>
+<% end %>
