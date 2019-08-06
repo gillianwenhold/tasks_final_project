@@ -3,7 +3,7 @@
 class TasksController < ApplicationController
   def index
     @tasks = if params[:group_id]
-               Cohort.find(params[:group_id]).tasks.order(due_date: :asc)
+               Group.find(params[:group_id]).tasks.order(due_date: :asc)
              else
                Task.all.order(due_date: :asc)
              end
