@@ -17,6 +17,7 @@
 
 <% if current_user.admin %>
   <%= link_to 'All Groups', groups_path, class: "btn btn-right" %>
+  <%= link_to "Edit Group", edit_group_path(@group), class: "btn btn-right" %>
   <%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-right" %>
 <% end %>
 

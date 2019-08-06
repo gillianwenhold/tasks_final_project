@@ -20,10 +20,12 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit; end
+
   def show
     @group = Group.find(params[:id])
-    @members = @Group.users.all
-    @tasks = @Group.tasks.all.order(due_date: :asc)
+    @members = @group.users.all
+    @tasks = @group.tasks.all.order(due_date: :asc)
     flash[:notice] = Task.pastdue(@tasks)
   end
 
@@ -36,7 +38,7 @@ class GroupsController < ApplicationController
 
 private
 
-  def cohort_params
+  def group_params
     params.require(:group).permit(:name, :description)
   end
 end
