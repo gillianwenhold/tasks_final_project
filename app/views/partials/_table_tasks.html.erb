@@ -21,7 +21,7 @@
         <td><%= t.priority %></td>
         <% if t.complete %>
           <td class="done" style="margin-top:.5em">COMPLETE</td>
-        <% elsif t.overdue %>
+        <% elsif tasks.overdue.include?(t) %>
           <td class="overdue" style="margin-top:.5em">Due: <%= t.due %></td>
         <% else %>
           <td class="due" style="margin-top:.5em">Due: <%= t.due %></td>

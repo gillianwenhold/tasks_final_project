@@ -7,10 +7,7 @@ class TasksController < ApplicationController
              else
                Task.all.order(due_date: :asc)
              end
-    flash[:notice] = check if overdue
-  rescue ActiveRecord::RecordNotFound
-    flash[:notice] = "Cohort not found."
-    redirect_to home_path
+    flash[:notice] = "Overdue tasks!" if @tasks.overdue.any?
   end
 
   def new
@@ -53,9 +50,5 @@ private
 
   def check
     "There are overdue task(s). Please check the list!"
-  end
-
-  def overdue
-    @tasks.incomplete.overdue(Time.now).any?
   end
 end

@@ -8,11 +8,9 @@ class Task < ApplicationRecord
   validates :description, presence: true
   scope :completed, -> { where(complete: true).order(due_date: :asc) }
   scope :incomplete, -> { where(complete: false).order(due_date: :asc) }
-  scope :overdue, lambda { :conditions => ["due_date < ? AND complete != ?", Time.now, true] }
-
+  scope :overdue, -> { where("due_date < ? AND complete != ?", Time.now, true) }
 
   def due
     due_date.strftime("%b %d, %Y")
   end
-
 end
