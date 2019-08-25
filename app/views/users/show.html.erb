@@ -5,7 +5,7 @@
     <h1><%= @user.full_name %> | <%= @user.group.name %></h1>
     <p class="info">Click on the description of a task to see more info about it, or mark as complete.</p>
     <h3><%= @user.first_name %>'s To-Do Tasks:</h3>
-    <%= render 'partials/condensed_table_tasks', tasks: @user.tasks.incomplete %>
+    <%= render 'partials/condensed_table_tasks', tasks: @tasks %>
   </div>
 
   <div class="col-2 form">
@@ -24,4 +24,4 @@
 <br />
 
 <h1>Completed Tasks</h1>
-<%= render 'partials/table_tasks', tasks: @user.tasks.completed %>
+<%= render 'partials/table_tasks', tasks: @completed %>
