@@ -13,6 +13,7 @@ gem "bootstrap-sass", "3.4.1"
 gem "coffee-rails", "~> 4.2"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.5"
+gem "jquery-rails"
 gem "puma", "~> 3.11"
 # Use SCSS for stylesheets
 gem "rails", "~> 5.2.3"
