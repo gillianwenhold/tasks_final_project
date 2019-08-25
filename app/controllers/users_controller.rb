@@ -46,6 +46,11 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def tasks_data
+    set_user
+    render json: @user.tasks.all.order(due_date: :asc).to_json
+  end
+
 private
 
   def set_user

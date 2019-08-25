@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "/signup", to: "users#new"
   delete "/logout", to: "sessions#destroy", as: "logout"
   post "/user_tasks", to: "user_tasks#create", as: "user_tasks"
-
+  get "/users/:id/tasks_data", to: "users#tasks_data"
   resources :groups do
     resources :tasks, only: [:index, :new, :create]
     resources :users, only: [:show]
