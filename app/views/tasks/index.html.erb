@@ -18,11 +18,8 @@
       event.preventDefault();
       alert("Prevented");
       var claimed = $(this).serialize();
-      var posting = $.post('/user_tasks', claimed);
-      posting.done(function(data) {
-        var task_claimed = data
-        console.log(task_claimed);
-      })
+      $.post('/user_tasks', claimed);
+      $("#claimed_by").text(current_user.full_name)
     });
   });
 </script>
