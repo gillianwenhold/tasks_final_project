@@ -5,10 +5,14 @@ $(document).ready(function() {
 function claimTask(event) {
   alert("Prevented Default");
   var claimed = $(event).serialize();
-  debugger;
+  var user_id = event.user_id.value
   var posting = $.post('/user_tasks', claimed);
   posting.done(function() {
-    $("#taskUsers").append("Added User")
+    $.get("/users/" + user_id + ".json", function(data) {
+      debugger;
+      var user = data
+      $("#taskUsers").append(user["username"])
+    });
   });
 }
 

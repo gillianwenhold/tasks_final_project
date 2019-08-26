@@ -29,8 +29,7 @@ class UsersController < ApplicationController
     @completed = @user.tasks.completed.order(due_date: :asc)
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @tasks.to_json }
-      format.json { render json: @completed.to_json }
+      format.json { render json: @user.to_json }
     end
     flash[:notice] = Task.pastdue(@tasks) if @user == current_user
   end
