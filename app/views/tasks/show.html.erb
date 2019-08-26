@@ -18,11 +18,13 @@
     <% end %>
   </div>
 
-  <div class="col-2 form">
-    <h1 class="form-heading">Claimed By</h1>
+  <div class="col-2">
+    <h3>Claimed By:</h3>
+    <div id="taskUsers">
     <% @task.users.each do |u| %>
       <p><%= link_to u.full_name, user_path(u) %></p>
     <% end %>
+    </div>
   </div>
 </div>
 

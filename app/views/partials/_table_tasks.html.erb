@@ -9,7 +9,7 @@
       <tr class="task-<%=t.id%>">
         <td><%= t.group.name %></td>
         <td><%= link_to t.description, task_path(t) %></td>
-        <td id="claimed_by">
+        <td id="taskUsers">
           <% if !t.users.empty? %>
             <% t.users.each do |u| %>
               <p><%= u.full_name %></p>
