@@ -11,15 +11,3 @@
 <div class="row">
   <%= render 'partials/table_tasks', tasks: @tasks.completed %>
 </div>
-
-<script type="text/javascript" charset="utf-8">
-  $(function () {
-    $('form#claim').submit(function(event) {
-      event.preventDefault();
-      alert("Prevented");
-      var claimed = $(this).serialize();
-      $.post('/user_tasks', claimed);
-      $("#claimed_by").text(current_user.full_name)
-    });
-  });
-</script>

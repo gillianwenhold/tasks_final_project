@@ -8,6 +8,13 @@ class TasksController < ApplicationController
       else
         Task.all.order(due_date: :asc)
       end
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @tasks.to_json }
+    end
+
+
+
     flash[:notice] = Task.pastdue(@tasks)
   end
 
