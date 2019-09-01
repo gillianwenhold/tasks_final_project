@@ -9,7 +9,6 @@ function claimTask(event) {
   var posting = $.post('/user_tasks', claimed);
   posting.done(function() {
     $.get("/users/" + user_id + ".json", function(data) {
-      debugger;
       var user = data
       $("#taskUsers").append(user["username"])
     });
