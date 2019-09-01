@@ -1,9 +1,9 @@
 <%= render 'partials/flash' %>
 
 <% if @task.complete %>
-  <h3 class="done">COMPLETE</h3>
+  <h3 id="task_status" class="done">COMPLETE</h3>
 <% else %>
-  <h3 class="due">Due <%= @task.due %></h3>
+  <h3 id="task_status" class="due">Due <%= @task.due %></h3>
 <% end %>
 
 <h1><%= @task.description %></h1>
