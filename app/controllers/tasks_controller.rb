@@ -12,9 +12,6 @@ class TasksController < ApplicationController
       format.html { render :index }
       format.json { render json: @tasks.to_json }
     end
-
-
-
     flash[:notice] = Task.pastdue(@tasks)
   end
 
