@@ -1,8 +1,8 @@
 <%= render 'partials/flash' %>
 
 <%= link_to 'Create Task', new_task_path, class: "btn btn-right" %>
+
 <h1>Pending Tasks</h1>
-<br />
 <p class="info">Click on the description of a task to see more info about it, add to your own to-do list, or mark as complete.</p>
 
 <table>
@@ -18,6 +18,23 @@
   <tbody id="pending-tasks"></tbody>
 </table>
 
+<br />
+
+<h1>Completed Tasks</h1>
+<p class="info">Click on the description of a task to see who it was completed by.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Description</th>
+      <th>Priority</th>
+      <th>Due Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody id="completed-tasks"></tbody>
+</table>
+
 <script>
-  $( window ).on( "load", loadTasks() );
+  $(window).on("load", loadTasks());
 </script>

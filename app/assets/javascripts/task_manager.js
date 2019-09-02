@@ -10,10 +10,13 @@ class Task {
     this.due_date = new Date(data.due_date);
     this.complete = data.complete;
     this.group = data.group.name;
-    if (this.due_date < Date.now) {
-      this.overdue = true;
+  }
+
+  overdue() {
+    if (this.due_date < Date.now()) {
+      return true;
     } else {
-      this.overdue = false;
+      return false;
     }
   }
 
@@ -35,15 +38,14 @@ function loadTasks() {
       var status;
       if (task.complete) {
         status = '<td class="done">done</td>'
-      } else if (task.overdue) {
+        $("#completed-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
+      } else if (task.overdue()) {
         status = '<td class="overdue">overdue</td>'
+        $("#pending-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
       } else {
         status = '<td class="due">pending</td>'
+        $("#pending-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
       }
-
-      $("#pending-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
-      console.log(status)
-      console.log(this.overdue)
     }
   });
 }

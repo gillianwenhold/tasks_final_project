@@ -15,5 +15,5 @@
 //= require activestorage
 //= require turbolinks
 //= require script
-//= require complete_task
+//= require task_manager
 //= require_tree .
