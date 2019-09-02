@@ -30,24 +30,28 @@ class Task {
   }
 }
 
-function loadTasks() {
+function loadAdminTasks() {
   $.get("/tasks.json", function(data) {
-    for (let i = 0; i < data.length; i++) {
-      var task = new Task(data[i]);
-      var link = `<a href="/tasks/${task.id}">${task.description}</a>`;
-      var status;
-      if (task.complete) {
-        status = '<td class="done">done</td>'
-        $("#completed-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
-      } else if (task.overdue()) {
-        status = '<td class="overdue">overdue</td>'
-        $("#pending-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
-      } else {
-        status = '<td class="due">pending</td>'
-        $("#pending-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
-      }
-    }
+    createTable(data);
   });
+}
+
+function createTable(data) {
+  for (let i = 0; i < data.length; i++) {
+    var task = new Task(data[i]);
+    var link = `<a href="/tasks/${task.id}">${task.description}</a>`;
+    var status;
+    if (task.complete) {
+      status = '<td class="done">done</td>'
+      $("#completed-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
+    } else if (task.overdue()) {
+      status = '<td class="overdue">overdue</td>'
+      $("#pending-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
+    } else {
+      status = '<td class="due">pending</td>'
+      $("#pending-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
+    }
+  }
 }
 
 function attachListeners() {
