@@ -2,12 +2,17 @@
 
 <%= link_to 'Create Task', new_task_path, class: "btn btn-right" %>
 <h1>Pending Tasks</h1>
-<p class="info">Click on the description of a task to see more info about it, or mark as complete.</p>
-<div class="row">
-  <%= render 'partials/table_tasks', tasks: @tasks.incomplete %>
-</div>
-<br>
-<h1>Completed Tasks</h1>
-<div class="row">
-  <%= render 'partials/table_tasks', tasks: @tasks.completed %>
-</div>
+<br />
+<p class="info">Click on the description of a task to see more info about it, add to your own to-do list, or mark as complete.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Description</th>
+      <th>Priority</th>
+      <th>Due Date</th>
+    </tr>
+  </thead>
+  <tbody id="pending-tasks"></tbody>
+</table>

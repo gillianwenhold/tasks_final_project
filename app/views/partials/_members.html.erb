@@ -2,3 +2,4 @@
 <% members.each do |m| %>
   <p><%= link_to m.full_name, group_user_path(group, m) %> (<%= m.tasks.incomplete.count %>)</p>
 <% end %>
+
