@@ -36,6 +36,17 @@ function loadAdminTasks() {
   });
 }
 
+function loadUserTasks() {
+  var page_url = window.location.href
+  var group_id = page_url.substring(
+    page_url.lastIndexOf("groups/") + 7,
+    page_url.lastIndexOf("/tasks")
+  );
+  $.get("/groups/" + group_id + "/tasks.json", function(data) {
+    createTable(data);
+  });
+}
+
 function createTable(data) {
   for (let i = 0; i < data.length; i++) {
     var task = new Task(data[i]);

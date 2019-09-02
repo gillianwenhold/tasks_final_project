@@ -35,4 +35,8 @@
   <tbody id="completed-tasks"></tbody>
 </table>
 
-<script> $(document).ready(loadAdminTasks()); </script>
+<% if current_user.admin %>
+  <script> $(document).ready(loadAdminTasks()); </script>
+<% else %>
+  <script> $(document).ready(loadUserTasks()); </script>
+<% end %>
