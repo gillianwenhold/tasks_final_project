@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.5.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # Use ActiveModel has_secure_password
+gem "active_model_serializers"
 gem "bcrypt", "~> 3.1.7"
 gem "bootstrap-sass", "3.4.1"
 

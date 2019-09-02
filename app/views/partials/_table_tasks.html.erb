@@ -4,6 +4,7 @@
       <th>Description</th>
       <th>Claimed By</th>
       <th>Priority</th>
+      <th>Status</th>
     </tr>
     <% tasks.each do |t| %>
       <tr class="task-<%=t.id%>">
@@ -20,11 +21,17 @@
         </td>
         <td><%= t.priority %></td>
         <% if t.complete %>
-          <td class="done" style="margin-top:.5em">COMPLETE</td>
+          <td class="done" id="task_status" style="margin-top:.5em">COMPLETE</td>
         <% elsif tasks.overdue.include?(t) %>
-          <td class="overdue" style="margin-top:.5em">Due: <%= t.due %></td>
+          <td class="overdue" id="task_status" style="margin-top:.5em">
+            Due: <%= t.due %>
+            <%= render 'partials/complete', task: t %>
+          </td>
         <% else %>
-          <td class="due" style="margin-top:.5em">Due: <%= t.due %></td>
+          <td class="due" id="task_status" style="margin-top:.5em">
+            Due: <%= t.due %>
+            <%= render 'partials/complete', task: t %>
+          </td>
         <% end %>
       </tr>
     <% end %>

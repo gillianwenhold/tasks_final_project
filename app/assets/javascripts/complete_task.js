@@ -13,13 +13,10 @@ class Task {
   }
   markComplete() {
     this.complete = true;
-    $("#task_status").attr('class', 'done');
-    $("#task_status").text("COMPLETE");
-    $.ajax({
-      method: "POST",
-      url: "/tasks/" + this.id,
-      data: { complete: true},
-      dataType: "json"
+    var data = {complete: true}
+    $.post("/tasks/" + this.id, data, function() {
+      $("#task_status").attr('class', 'done');
+      $("#task_status").text("COMPLETE");
     });
   }
 }
@@ -27,8 +24,9 @@ class Task {
 function attachListeners() {
   $("form#complete_task").submit(function(event) {
     event.preventDefault();
-    $.get("/tasks/" + this.task_id.value + ".json", function(data) {
-      var task = new Task(data);
+    var task;
+    $.get("/tasks/" + this.task_id.value + ".json").then( resp => {
+      task = new Task(resp);
       task.markComplete();
     });
   });
