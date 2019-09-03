@@ -34,7 +34,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @task.to_json }
+      format.json { render json: @task.to_json(only: [:id, :priority, :due_date, :description, :complete], include: [group: {only: [:name]}, users: {only: [:username]}]) }
     end
   end
 

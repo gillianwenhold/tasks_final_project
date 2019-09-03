@@ -20,6 +20,10 @@ class Task {
     }
   }
 
+  getUsers(data) {
+    var users = []
+  }
+
   markComplete() {
     this.complete = true;
     var data = {complete: true}
@@ -70,6 +74,7 @@ function attachListeners() {
     event.preventDefault();
     var task;
     $.get("/tasks/" + this.task_id.value + ".json").then( resp => {
+      debugger;
       task = new Task(resp);
       task.markComplete();
     });
