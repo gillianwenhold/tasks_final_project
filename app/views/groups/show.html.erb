@@ -18,5 +18,3 @@
   <%= link_to "Edit Group", edit_group_path(@group), class: "btn" %>
   <%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
 <% end %>
-<%= link_to "Create Task for #{@group.name}", new_group_task_path(@group), class: "btn" %>
-

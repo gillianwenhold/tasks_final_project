@@ -1,5 +1,6 @@
-<h1 class="form-heading"><%= link_to group.name, group %></h1>
-<% members.each do |m| %>
-  <p><%= link_to m.full_name, group_user_path(group, m) %> (<%= m.tasks.incomplete.count %>)</p>
-<% end %>
-
+<h1 class="form-heading group-members"><%= link_to group.name, group %></h1>
+<div class="group-member">
+  <% members.each do |m| %>
+    <p><%= link_to m.full_name, group_user_path(group, m) %></p>
+  <% end %>
+</div>
