@@ -10,7 +10,13 @@ class TasksController < ApplicationController
       end
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: @tasks.to_json(only: [:id, :priority, :due_date, :description, :complete], include: [group: {only: [:name]}, users: {only: [:username]}]) }
+      format.json {
+        render json: @tasks.to_json(
+          only: %i[id priority due_date description complete],
+          include: [group: { only: %i[name] },
+                    users: { only: %i[username] }]
+        )
+      }
     end
     flash[:notice] = Task.pastdue(@tasks)
   end
@@ -34,7 +40,13 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @task.to_json(only: [:id, :priority, :due_date, :description, :complete], include: [group: {only: [:name]}, users: {only: [:username]}]) }
+      format.json {
+        render json: @task.to_json(
+          only: %i[id priority due_date description complete],
+          include: [group: { only: %i[name] },
+                    users: { only: %i[username] }]
+        )
+      }
     end
   end
 
