@@ -64,8 +64,17 @@ function completeTask(form_data) {
   });
 }
 
-function nextTask() {
+function nextGroup() {
   alert("Next");
+  var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+  $.get("/tasks/" + nextId + ".json", function(data) {
+    // get post
+    var group = data;
+    $(".group-name").text(group["title"]);
+    $(".group-description").text(group["description"]);
+    // re-set the id to current on the link
+    $(".js-next").attr("data-id", post["id"]);
+  });
 }
 
 
@@ -74,5 +83,5 @@ function attachListeners() {
     event.preventDefault();
     completeTask(this);
   });
-  $(".js-next").on("click", nextTask());
+  $(".js-next").on("click", nextGroup());
 }
