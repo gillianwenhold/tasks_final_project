@@ -16,7 +16,7 @@ class Task < ApplicationRecord
 
   def self.pastdue(tasks)
     msg = "You have overdue task(s). Please check the " \
-          "list and grab an umbrella and then you can complete it!"
+          "list and complete it!"
     msg if tasks.overdue.any?
   end
 end

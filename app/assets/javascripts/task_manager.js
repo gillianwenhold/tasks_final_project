@@ -28,8 +28,8 @@ function loadAdminTasks() {
 }
 
 function loadUserTasks() {
-  var page_url = window.location.href
-  var group_id = page_url.substring(
+  let page_url = window.location.href
+  let group_id = page_url.substring(
     page_url.lastIndexOf("groups/") + 7,
     page_url.lastIndexOf("/tasks")
   );
@@ -40,9 +40,9 @@ function loadUserTasks() {
 
 function createTable(data) {
   for (let i = 0; i < data.length; i++) {
-    var task = new Task(data[i]);
-    var link = `<a href="/tasks/${task.id}">${task.description}</a>`;
-    var status;
+    let task = new Task(data[i]);
+    let link = `<a href="/tasks/${task.id}">${task.description}</a>`;
+    let status;
     if (task.complete) {
       status = '<td class="done">done</td>'
       $("#completed-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
@@ -64,9 +64,15 @@ function completeTask(form_data) {
   });
 }
 
+function nextTask() {
+  alert("Next");
+}
+
+
 function attachListeners() {
   $("form#complete_task").submit(function(event) {
     event.preventDefault();
     completeTask(this);
   });
+  $(".js-next").on("click", nextTask());
 }

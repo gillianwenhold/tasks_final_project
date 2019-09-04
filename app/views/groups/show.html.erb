@@ -2,8 +2,9 @@
 
 <div class="row">
   <div class="col-1">
-    <h1><%= @group.name %></h1>
+    <h1><%= @group.name %> Group</h1>
     <p><%= @group.description %></p>
+    <p>(<%= @group.users.count %> Users)</p>
     -------------------------------------
   </div>
 
@@ -12,13 +13,10 @@
   </div>
 </div>
 
+<a href="#" class="js-next btn btn-right" data-id="<%=@group.id%>">Next Group</a>
 <% if current_user.admin %>
-  <%= link_to 'All Groups', groups_path, class: "btn btn-right" %>
-  <%= link_to "Edit Group", edit_group_path(@group), class: "btn btn-right" %>
-  <%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-right" %>
+  <%= link_to "Edit Group", edit_group_path(@group), class: "btn" %>
+  <%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
 <% end %>
+<%= link_to "Create Task for #{@group.name}", new_group_task_path(@group), class: "btn" %>
 
-<%= link_to "Create Task for #{@group.name}", new_group_task_path(@group), class: "btn btn-right" %>
-
-<h1>Completed Tasks</h1>
-<%= render 'partials/table_tasks', tasks: @tasks.completed %>

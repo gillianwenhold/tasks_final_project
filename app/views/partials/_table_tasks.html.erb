@@ -16,7 +16,9 @@
               <p><%= u.full_name %></p>
             <% end %>
           <% else %>
-            <%= render 'partials/claim', task: t %>
+            <% if !t.complete %>
+              <%= render 'partials/claim', task: t %>
+            <% end %>
           <% end %>
         </td>
         <td><%= t.priority %></td>
@@ -25,12 +27,10 @@
         <% elsif tasks.overdue.include?(t) %>
           <td class="overdue" id="task_status" style="margin-top:.5em">
             Due: <%= t.due %>
-            <%= render 'partials/complete', task: t %>
           </td>
         <% else %>
           <td class="due" id="task_status" style="margin-top:.5em">
             Due: <%= t.due %>
-            <%= render 'partials/complete', task: t %>
           </td>
         <% end %>
       </tr>

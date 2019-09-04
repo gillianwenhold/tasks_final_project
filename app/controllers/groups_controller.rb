@@ -2,7 +2,7 @@
 
 class GroupsController < ApplicationController
   before_action :user_admin
-  before_action :set_group, only: %i[show destroy]
+  before_action :set_group, only: %i[show edit update destroy]
 
   def index
     @groups = Group.all
@@ -22,6 +22,16 @@ class GroupsController < ApplicationController
   end
 
   def edit; end
+
+  def update
+    @group.update(group_params)
+    if @group.save
+      flash[:notice] = "Group Updated."
+      redirect_to @group
+    else
+      flash[:notice] = "Error. Please try again."
+    end
+  end
 
   def show
     @members = @group.users.all

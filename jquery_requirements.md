@@ -14,4 +14,4 @@ Confirm
 - [x] You made the changes in a commit that relate to the commit message
 - [x] You don't include changes in a commit that aren't related to the commit message
 - [ ] Makes use of ES6 features as much as possible (e.g Arrow functions, Let & Const, Class, constructor functions)
-- [ ] Application is pretty DRY.
+- [x] Application is pretty DRY.
