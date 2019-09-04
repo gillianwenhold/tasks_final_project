@@ -11,5 +11,6 @@ class UserTasksController < ApplicationController
       task_id: params[:task_id]
     )
     flash[:notice] = "Task Claimed."
+    redirect_to task_path(params[:task_id])
   end
 end
