@@ -37,6 +37,15 @@ class GroupsController < ApplicationController
     @members = @group.users.all
     @tasks = @group.tasks.all.order(due_date: :asc)
     flash[:notice] = Task.pastdue(@tasks)
+    respond_to do |format|
+      format.html { render :show }
+      format.json {
+        render json: @group.to_json(
+          only: %i[id name description],
+          include: [users: { only: %i[username] }]
+        )
+      }
+    end
   end
 
   def destroy

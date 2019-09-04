@@ -3,10 +3,11 @@ $(document).ready(function() {
 });
 
 function nextGroup() {
-  alert("Next");
+  alert("in nex tfunction");
   var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-  $.get("/tasks/" + nextId + ".json", function(data) {
+  $.get("/groups/" + nextId + ".json", function(data) {
     var group = data;
+    console.log(group);
     $(".group-name").text(group["title"]);
     $(".group-description").text(group["description"]);
     $(".js-next").attr("data-id", group["id"]);
@@ -15,5 +16,7 @@ function nextGroup() {
 
 
 function attachListeners() {
-  $(".js-next").on("click", nextGroup());
+  $(".js-next").on("click", function() {
+    nextGroup();
+  });
 }
