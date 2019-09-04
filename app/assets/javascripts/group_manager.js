@@ -7,16 +7,15 @@ class Group {
     this.id = data.id;
     this.name = data.name;
     this.description = data.description;
-    this.users = []
+    this.users = data.users
   }
 
   getUsers(data) {
     $(".group-member").empty();
-    for (let i=0; i<data.length; i++) {
-      this.users.push(data[i].username);
-    }
     for (let i=0; i<this.users.length; i++) {
-      $(".group-member").append(this.users[i] + "<br />");
+      let user = this.users[i]
+      let user_link = `<a href="/users/${user.id}">${user.first_name} ${user.last_name}</a>`
+      $(".group-member").append("<p>" + user_link + "</p>");
     }
   }
 }
@@ -33,7 +32,6 @@ function nextGroup() {
     $(".group-count").text("(" + group.users.length + " Users)");
     $(".group-members").text(group.name);
     $(".js-next").attr("data-id", group.id);
-
     return false
   });
 }

@@ -42,7 +42,7 @@ class GroupsController < ApplicationController
       format.json {
         render json: @group.to_json(
           only: %i[id name description],
-          include: [users: { only: %i[username] }]
+          include: [users: { only: %i[id first_name last_name] }]
         )
       }
     end
