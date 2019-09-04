@@ -2,7 +2,7 @@
 
 Specs:
 - [x] Uses jQuery for implementing new requirements
-- [ ] Includes a single resource rendered using jQuery, a JSON backend and OO JS.
+- [x] Includes a single resource rendered using jQuery, a JSON backend and OO JS.
 - [x] Includes a list of resources rendered using jQuery, a JSON backend and OO JS.
 - [x] Intercepts a form to create a resource and then renders the response to the DOM without a page refresh.
 - [x] Translates all JSON responses into JS model objects.
@@ -13,5 +13,5 @@ Confirm
 - [x] Your commit messages are meaningful
 - [x] You made the changes in a commit that relate to the commit message
 - [x] You don't include changes in a commit that aren't related to the commit message
-- [ ] Makes use of ES6 features as much as possible (e.g Arrow functions, Let & Const, Class, constructor functions)
+- [x] Makes use of ES6 features as much as possible (e.g Arrow functions, Let & Const, Class, constructor functions)
 - [x] Application is pretty DRY.
