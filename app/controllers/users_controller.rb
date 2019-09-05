@@ -27,10 +27,7 @@ class UsersController < ApplicationController
     @group = @user.group
     @tasks = @user.tasks.incomplete.order(due_date: :asc)
     @completed = @user.tasks.completed.order(due_date: :asc)
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @user.to_json }
-    end
+    format_response(:show, @user)
     flash[:notice] = Task.pastdue(@tasks) if @user == current_user
   end
 
@@ -73,5 +70,12 @@ private
       :group_id,
       :admin
     )
+  end
+
+  def format_response(view, object)
+    respond_to do |format|
+      format.html { render view }
+      format.json { render json: object.to_json }
+    end
   end
 end
