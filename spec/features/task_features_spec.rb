@@ -23,6 +23,24 @@ RSpec.describe "Tasks", type: :feature do
       visit task_path(@task)
       expect(page).to have_content(@task.description)
     end
+
+    it "shows the due date of the task if incomplete" do
+      visit task_path(@task)
+      expect(page).to have_content("Due")
+    end
+
+    it "has a button to mark a task complete if currently incomplete" do
+      visit task_path(@task)
+      expect(page).to have_button("Mark Completed")
+    end
+  end
+
+  describe "Marking complete" do
+    it "updates the due date to show complete" do
+      visit task_path(@task)
+      click_button "Mark Completed"
+      expect(page).to have_content("COMPLETE")
+    end
   end
 =begin
   describe "Marking a task complete" do
