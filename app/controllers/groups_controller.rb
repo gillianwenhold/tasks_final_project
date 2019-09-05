@@ -36,16 +36,8 @@ class GroupsController < ApplicationController
   def show
     @members = @group.users.all
     @tasks = @group.tasks.all.order(due_date: :asc)
+    format_response(:show, @group)
     flash[:notice] = Task.pastdue(@tasks)
-    respond_to do |format|
-      format.html { render :show }
-      format.json do
-        render json: @group.to_json(
-          only: %i[id name description],
-          include: [users: { only: %i[id first_name last_name] }]
-        )
-      end
-    end
   end
 
   def destroy
@@ -63,5 +55,17 @@ private
   def group_params
     params.require(:group)
           .permit(:name, :description)
+  end
+
+  def format_response(view, object)
+    respond_to do |format|
+      format.html { render view }
+      format.json do
+        render json: object.to_json(
+          only: %i[id name description],
+          include: [users: { only: %i[id first_name last_name] }]
+        )
+      end
+    end
   end
 end

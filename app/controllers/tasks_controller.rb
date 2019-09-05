@@ -8,16 +8,7 @@ class TasksController < ApplicationController
       else
         Task.all.order(due_date: :asc)
       end
-    respond_to do |format|
-      format.html { render :index }
-      format.json do
-        render json: @tasks.to_json(
-          only: %i[id priority due_date description complete],
-          include: [group: { only: %i[name] },
-                    users: { only: %i[username] }]
-        )
-      end
-    end
+    format_response(:index, @tasks)
     flash[:notice] = Task.pastdue(@tasks)
   end
 
@@ -38,16 +29,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
-    respond_to do |format|
-      format.html { render :show }
-      format.json do
-        render json: @task.to_json(
-          only: %i[id priority due_date description complete],
-          include: [group: { only: %i[name] },
-                    users: { only: %i[username] }]
-        )
-      end
-    end
+    format_response(:show, @task)
   end
 
   def update
@@ -74,5 +56,18 @@ private
     params.require(:task).permit(
       :priority, :description, :complete, :due_date, :group_id
     )
+  end
+
+  def format_response(view, object)
+    respond_to do |format|
+      format.html { render view }
+      format.json do
+        render json: object.to_json(
+          only: %i[id priority due_date description complete],
+          include: [group: { only: %i[name] },
+                    users: { only: %i[username] }]
+        )
+      end
+    end
   end
 end
