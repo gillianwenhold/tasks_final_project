@@ -39,12 +39,12 @@ class GroupsController < ApplicationController
     flash[:notice] = Task.pastdue(@tasks)
     respond_to do |format|
       format.html { render :show }
-      format.json {
+      format.json do
         render json: @group.to_json(
           only: %i[id name description],
           include: [users: { only: %i[id first_name last_name] }]
         )
-      }
+      end
     end
   end
 
