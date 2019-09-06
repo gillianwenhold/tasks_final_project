@@ -3,8 +3,18 @@
 require "rails_helper"
 require "pry"
 
-RSpec.describe "Tasks", type: :feature do
 
+RSpec.configure do |config|
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome_headless
+  end
+end
+
+RSpec.describe "Tasks", type: :system do
   before do
     Task.destroy_all
     Group.destroy_all
