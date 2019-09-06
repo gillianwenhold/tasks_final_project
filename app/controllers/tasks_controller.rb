@@ -42,6 +42,7 @@ class TasksController < ApplicationController
     end
     respond_to do |format|
       format.json { render json: @task }
+      format.html { render :show }
     end
   end
 
