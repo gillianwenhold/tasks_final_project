@@ -60,27 +60,4 @@ RSpec.describe "Tasks", type: :system do
       expect(@task.complete).to eq(true)
     end
   end
-=begin
-  describe "Marking a task complete" do
-    before do
-      User.destroy_all
-      Group.destroy_all
-      Task.destroy_all
-      @user = create(:user)
-      @group = create(:group)
-      @task = create(:task, group: @group)
-    end
-
-    it "updates a task to be marked as complete" do
-      visit task_path(@task)
-      expect(page).to have_content("Mark Completed")
-    end
-
-    it "does not refresh the page" do
-    end
-
-    it "updates the due date div to reflect the change" do
-    end
-  end
-=end
 end
