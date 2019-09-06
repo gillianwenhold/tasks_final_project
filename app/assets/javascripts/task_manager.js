@@ -1,5 +1,28 @@
-$(document).ready(function() {
-  attachListeners();
+$(function() {
+  $("#complete_task").on("submit", function(e) {
+    event.preventDefault();
+    var url = this.action;
+    var data = {
+      "authenticity_token": $("input[name='authenticity_token']").attr("value"),
+      "task": {
+        "complete": $("input[name='task[complete]']").attr("value"),
+        "task_id": $("input[name='task_id']").attr("value")
+      }
+    }
+    $.ajax({
+      type: "PATCH",
+      url: url,
+      data: data,
+      dataType: "json",
+      success: function(resp) {
+        $("#task_status").attr('class', 'done');
+        $("#task_status").text("COMPLETE");
+        $("#claim_task").hide();
+        $("#complete_task").hide();
+      }
+    })
+    console.log(data);
+  });
 });
 
 class Task {
@@ -28,8 +51,8 @@ function loadAdminTasks() {
 }
 
 function loadUserTasks() {
-  let page_url = window.location.href
-  let group_id = page_url.substring(
+  var page_url = window.location.href
+  var group_id = page_url.substring(
     page_url.lastIndexOf("groups/") + 7,
     page_url.lastIndexOf("/tasks")
   );
@@ -40,9 +63,9 @@ function loadUserTasks() {
 
 function createTable(data) {
   for (let i = 0; i < data.length; i++) {
-    let task = new Task(data[i]);
-    let link = `<a href="/tasks/${task.id}">${task.description}</a>`;
-    let status;
+    var task = new Task(data[i]);
+    var link = `<a href="/tasks/${task.id}">${task.description}</a>`;
+    var status;
     if (task.complete) {
       status = '<td class="done">done</td>'
       $("#completed-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
@@ -54,19 +77,4 @@ function createTable(data) {
       $("#pending-tasks").append("<tr><td>"+ task.group + "</td><td>" + link + "</td><td>" + task.priority + "</td><td>" + task.due_date.toLocaleDateString() + "</td>" + status + "</tr>");
     }
   }
-}
-
-function completeTask(form_data) {
-  form = $(form_data).serialize();
-  $.post("/tasks/" + form_data.task_id.value, form, function(resp) {
-    $("#task_status").attr('class', 'done');
-    $("#task_status").text("COMPLETE");
-  });
-}
-
-function attachListeners() {
-  $("form#complete_task").submit(function(event) {
-    event.preventDefault();
-    completeTask(this);
-  });
 }

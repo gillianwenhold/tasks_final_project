@@ -37,9 +37,11 @@ class TasksController < ApplicationController
     @task.update(task_params)
     if @task.save
       flash[:notice] = "Task Updated."
-      redirect_to @task
     else
       flash[:notice] = "Error. Please try again."
+    end
+    respond_to do |format|
+      format.json { render json: @task }
     end
   end
 
