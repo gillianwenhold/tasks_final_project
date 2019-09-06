@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "pry"
 
 RSpec.describe "Tasks", type: :feature do
 
@@ -40,6 +41,13 @@ RSpec.describe "Tasks", type: :feature do
       visit task_path(@task)
       click_button "Mark Completed"
       expect(page).to have_content("COMPLETE")
+    end
+
+    it "updates the task complete attribute to true" do
+      visit task_path(@task)
+      click_button "Mark Completed"
+      @task.reload
+      expect(@task.complete).to eq(true)
     end
   end
 =begin
