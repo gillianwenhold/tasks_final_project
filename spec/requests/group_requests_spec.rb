@@ -12,13 +12,14 @@ RSpec.describe "Group requests", :type => :request do
     user = create(:user, group: group)
   end
 
+=begin
   it "Creates a group" do
+    allow_any_instance_of(Group).to receive(:method).and_return(value)
     headers = { "ACCEPT" => "application/json" }
     post "/groups", params: { :group => { name: "New Group", description: "group description" } }, headers: headers
     expect(response).to have_http_status(:created)
   end
 
-=begin
   it "Creates a new task and redirects to the show page" do
     group = create(:group)
     date = Time.now
