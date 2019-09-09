@@ -22,9 +22,15 @@ RSpec.describe "Task requests", :type => :request do
   end
 
   it "Creates a new task" do
+    get "/tasks/new"
+    expect(response).to render_template(:new)
+
     headers = { "ACCEPT" => "application/json" }
     post "/tasks", params: { :task => { priority: 1, due_date: Time.now, description: "New Task" } }, headers: headers
+
     expect(response).to redirect_to(assigns(:task))
+    follow_redirect!
+    expect(response).to render_template(:show)
   end
 
   it "Marks a task as complete" do
