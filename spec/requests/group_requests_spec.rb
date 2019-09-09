@@ -10,7 +10,6 @@ RSpec.describe "Group requests", :type => :request do
     User.destroy_all
     group = create(:group)
     user = create(:user, group: group)
-    sign_in user
   end
 
   it "Creates a group" do

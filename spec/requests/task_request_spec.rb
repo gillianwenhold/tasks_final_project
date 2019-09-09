@@ -4,7 +4,22 @@ require "rails_helper"
 require "pry"
 
 RSpec.describe "Task requests", :type => :request do
+  before do
+    Task.destroy_all
+    Group.destroy_all
+    User.destroy_all
+    @group = create(:group)
+    @user = create(:user, group: @group)
+    @task = create(:task)
+  end
 
+  it "Marks a task as complete" do
+    allow(@task).to receive(:complete) { true }
+    headers = { "ACCEPT" => "application/json" }
+    post_url = "/tasks/" + @task.id.to_s
+    patch post_url, params: { :task => { complete: true } }, headers: headers
+    expect(@task.complete).to eq(true)
+  end
 
 =begin
   it "Creates a new task and redirects to the show page" do
