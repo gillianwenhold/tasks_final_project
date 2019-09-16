@@ -6,7 +6,7 @@ Welcome to the Task Manager! This app is a group task manager, suitable for orga
 
 When signing up, users select which group they belong to. Then upon logging in, their profile page will show tasks they have claimed, and contain links to view other members of their group. Any person can create a new task for their group. Once a task has been created, it will appear in the to-do tab. From this page, users can claim tasks to do themselves (which will then appear on their profile page), mark items as complete, or create new ones.
 
-Admin users have the ability to view all tasks belonging to each group, create new tasks, and create/edit new cohorts.
+Admin users have the ability to view all tasks belonging to each group, create new tasks, and edit/create new groups.
 
 ## Installation & Starting the Program
 
