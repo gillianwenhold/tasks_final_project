@@ -15,7 +15,7 @@ gem "coffee-rails", "~> 4.2"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
-gem "puma", "~> 3.11"
+gem "puma", "~> 4.3"
 # Use SCSS for stylesheets
 gem "rails", "~> 5.2.3"
 # Use sqlite3 as the database for Active Record
