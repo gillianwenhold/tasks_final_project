@@ -7,12 +7,12 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id]) if session[:user_id]
   end
 
-  def user_admin
+  def check_admin_permission
     return head(:forbidden) unless current_user.admin
   end
 
   helper_method :current_user
-  helper_method :user_admin
+  helper_method :check_admin_permission
 
 private
 
