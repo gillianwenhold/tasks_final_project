@@ -1,6 +1,6 @@
 $(function() {
   $("#complete_task").on("submit", function(e) {
-    event.preventDefault();
+    e.preventDefault();
     var url = this.action;
     var data = {
       "authenticity_token": $("input[name='authenticity_token']").attr("value"),
